@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Workload Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+		footer {
+		text-align: center;
+		padding: 20px;
+		margin-top: 30px;
+		border-top: 1px solid #ccc;
+		}
+        footer ul {
+            list-style-type: none; /* Removes bullet points */
+            padding-left: 0; /* Aligns with the start of the footer text */
+        }
+
+        footer li {
+            margin-bottom: 5px; /* Spacing between list items, adjust as needed */
+        }
+        .info {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 50%;
+            cursor: help;
+            position: relative;
+        }
+
+        .tooltip {
+            display: none;
+            max-width: 800px;
+            background-color: black;
+            color: white;
+            text-align: left;
+            padding: 5px;
+            border-radius: 6px;
+            position: absolute;
+            z-index: 1;
+            bottom: 30px;
+            left: 100%;
+            margin-left: 10px;
+            white-space: nowrap;
+        }
+
+        .info:hover .tooltip {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Course Workload Calculator</h1>
+
+        <!-- Reading Section -->
+        <div class="section">
+            <h2>Reading</h2>
+            <label for="surveyReading">Survey Reading (Pages): <span class="info">i<span class="tooltip">Reading to survey main ideas; OK to skip entire portions of text</span></span></label>
+			<input type="number" id="surveyReading" placeholder="Enter number of pages">
+			<!-- Slider -->
+			<label for="surveyReadingRate">20-50 pages / hour in native language. Foreign lang. 60 %</label>
+			<input type="range" id="surveyReadingRate" min="12" max="50" value="35">
+			<span id="surveyReadingRateValue">35</span> pages/hour
+            <br><br>
+			
+			<label for="understandReading">Understand Reading (Pages): <span class="info">i<span class="tooltip">Reading to understand the meaning of each sentence</span></span></label>
+			<input type="number" id="understandReading" placeholder="Enter number of pages">
+			<!-- Slider for Understand Reading Rate -->
+			<label for="understandReadingRate">10-20 pages / hour in native language. Foreign lang. 60 %:</label>
+			<input type="range" id="understandReadingRate" min="6" max="20" value="15">
+			<span id="understandReadingRateValue">15</span> pages/hour
+			<br><br>
+
+            <label for="engageReading">Engage Reading (Pages): <span class="info">i<span class="tooltip">Reading while also working problems, drawing inferences, questioning, and evaluating</span></span></label>
+            <input type="number" id="engageReading" placeholder="Enter number of pages">
+			
+			<!-- Slider for Engage Reading Rate -->
+			<label for="engageReadingRate">4-10 pages / hour in native language. Foreign lang. 60 %</label>
+			<input type="range" id="engageReadingRate" min="2" max="10" value="7">
+			<span id="engageReadingRateValue">7</span> pages/hour
+			
+        </div>
+
+        <!-- Writing Section -->
+        <div class="section">
+            <h2>Writing</h2>
+            <label for="reflectiveWriting">Reflective/Narrative Writing (1h / page): <span class="info">i<span class="tooltip">Essays that require very little planning or critical engagement with content</span></span></label>
+            <input type="number" id="reflectiveWriting" placeholder="Enter number of pages">
+
+            <label for="argumentWriting">Argument Writing (2h / page): <span class="info">i<span class="tooltip">Essays that require critical engagement with content and detailed planning, but no outside research</span></span></label>
+            <input type="number" id="argumentWriting" placeholder="Enter number of pages">
+
+            <label for="researchWriting">Research Writing (4h / page): <span class="info">i<span class="tooltip">Essays that require detailed planning, outside research, and critical engagement</span></span></label>
+            <input type="number" id="researchWriting" placeholder="Enter number of pages">
+        </div>
+
+       <!-- Exam Preparation Section -->
+        <div class="section">
+            <h2>Exam Preparation</h2>
+            <label for="examPreparation">Hours for Exam Preparation (4-5 h / 1 ECTS in exam): <span class="info">i<span class="tooltip">Recap of content and making notes</span></span></label>
+            <input type="number" id="examPreparation" placeholder="Enter number of hours">
+        </div>
+
+        <!-- On-campus Teaching Section -->
+        <div class="section">
+            <h2>On-campus Teaching</h2>
+            <label for="lectures">Lectures, seminars, guided exercises etc.:</label>
+            <input type="number" id="lectures" placeholder="Enter number of hours">
+
+            <label for="independentWork">Independent work / time to think after teaching (1-2 h / hour of teaching):</label>
+            <input type="number" id="independentWork" placeholder="Enter number of hours">
+			
+			 <label for="homeExercises">Math home exercise / lab work after teaching (3-4h / hour of teaching):</label>
+            <input type="number" id="homeExercises" placeholder="Enter number of hours">
+        </div>
+
+        <!-- Group Work Section -->
+        <div class="section">
+            <h2>Group Work</h2>
+            <label for="groupWorkHours">Group Work (5 h preparation / 1 h presentation): <span class="info">i<span class="tooltip">Eg. preparation of a presentation</span></span></label>
+            <input type="number" id="groupWorkHours" placeholder="Enter number of hours">
+        </div>
+
+        <!-- Other Work Section -->
+        <div class="section">
+            <h2>Other Work</h2>
+            <label for="otherWorkHours">Other Work (Hours): <span class="info">i<span class="tooltip">All other work, such as excursions</span></span></label>
+            <input type="number" id="otherWorkHours" placeholder="Enter number of hours">
+        </div>
+
+        <!-- Calculation Button -->
+        <button id="calculateBtn" onclick="calculateWorkload()">Calculate Workload</button>
+
+        <!-- Results Display -->
+        <div class="result">
+            <p>Total Hours: <span id="totalHours">0</span> hours</p>
+            <p>ECTS Credits: <span id="ectsCredits">0</span> credits</p>
+        </div>
+    </div>
+<footer>
+    <p>
+        This course workload calculator is based on the <a href="https://fitech.io/app/uploads/2019/09/Learning-Design-Toolkit-v2.pdf" target="_blank">Learning Design Toolkit</a>  by Akseli Huhtanen, Aalto University, licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International license</a>.<br> Adaptations include converting the toolkit into an interactive web format and presenting the content in a user-friendly digital interface.
+    </p>
+    <p>
+        <b>Sources:</b>
+        <ul>
+            <li>Rice University: “Course Workload Estimator - Estimation Details” (<a href="https://cte.rice.edu/workload#howcalculated" target="_blank">link</a>)</li>
+            <li>University of Oulu: “Akateemisen opintojakson työmäärän mitoittaminen” (<a href="https://www.oulu.fi/koulutuspalvelut/julkaisut_ja_materiaalit/verkkomateriaaleja/ydinainesanalyysi.htm" target="_blank">link</a>)</li>
+            <li>Aalto University (2016): “Estimated and perceived: A guideline on workload by Aalto University pedagogical training”. Training material.</li>
+            <li>Karjalainen A., Alha K., and Jutila S. (2006): “Give me time to think - determining student workload in higher education.” University of Oulu Teaching development unit.</li>
+        </ul>
+    </p>
+</footer>
+<footer>
+    <p>
+        This page was developed with the assistance of ChatGPT, an AI language model by OpenAI.
+    </p>
+	<p>© 2023 Reko Ahola. All rights reserved.</p>
+
+</footer>
+
+    <script>
+function calculateWorkload() {
+        // Function to safely parse numbers, returns 0 for invalid inputs
+        function parseInput(value) {
+            return isNaN(parseFloat(value)) ? 0 : parseFloat(value);
+        }
+
+        // Reading Section
+        var surveyReading = parseInput(document.getElementById("surveyReading").value);
+        var surveyReadingRate = parseInput(document.getElementById("surveyReadingRate").value);
+        var totalHoursSurveyReading = surveyReading / surveyReadingRate;
+
+        var understandReading = parseInput(document.getElementById("understandReading").value);
+        var understandReadingRate = parseInput(document.getElementById("understandReadingRate").value);
+        var totalHoursUnderstandReading = understandReading / understandReadingRate;
+
+        var engageReading = parseInput(document.getElementById("engageReading").value);
+        var engageReadingRate = parseInput(document.getElementById("engageReadingRate").value);
+        var totalHoursEngageReading = engageReading / engageReadingRate;
+
+        // Writing Section
+        var reflectiveWriting = parseInput(document.getElementById("reflectiveWriting").value);
+        var totalHoursReflectiveWriting = reflectiveWriting * 1; // 1 hour per page
+
+        var argumentWriting = parseInput(document.getElementById("argumentWriting").value);
+        var totalHoursArgumentWriting = argumentWriting * 2; // 2 hours per page
+
+        var researchWriting = parseInput(document.getElementById("researchWriting").value);
+        var totalHoursResearchWriting = researchWriting * 4; // 4 hours per page
+
+        // Other Sections
+        var examPreparation = parseInput(document.getElementById("examPreparation").value);
+        var lectures = parseInput(document.getElementById("lectures").value);
+        var independentWork = parseInput(document.getElementById("independentWork").value);
+        var homeExercises = parseInput(document.getElementById("homeExercises").value);
+        var groupWorkHours = parseInput(document.getElementById("groupWorkHours").value);
+        var otherWorkHours = parseInput(document.getElementById("otherWorkHours").value);
+
+        // Sum up all hours
+        var totalHours = totalHoursSurveyReading + totalHoursUnderstandReading + totalHoursEngageReading +
+                         totalHoursReflectiveWriting + totalHoursArgumentWriting + totalHoursResearchWriting +
+                         examPreparation + lectures + independentWork + homeExercises + groupWorkHours + otherWorkHours;
+
+        // Update the Total Hours and ECTS (assuming 1 ECTS = 27 hours)
+        document.getElementById("totalHours").innerHTML = totalHours.toFixed(2);
+        document.getElementById("ectsCredits").innerHTML = (totalHours / 27).toFixed(2);
+    }
+			// Update slider values dynamically
+			document.getElementById("surveyReadingRate").oninput = function() {
+			document.getElementById("surveyReadingRateValue").innerHTML = this.value;
+		};
+		    document.getElementById("engageReadingRate").oninput = function() {
+			document.getElementById("engageReadingRateValue").innerHTML = this.value;
+		};
+			document.getElementById("understandReadingRate").oninput = function() {
+			document.getElementById("understandReadingRateValue").innerHTML = this.value;
+		}
+		
+    </script>
+</body>
+</html>
