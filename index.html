@@ -338,7 +338,46 @@ function calculateWorkload() {
     }
 	function printResults() {
         window.print();
-    }	
+    }
+	function printResults() {
+        var printableContent = '<h2>Course Workload Calculator Results</h2>';
+
+        // Function to add input values to printable content
+        function addInputValueToPrintableContent(inputId, description) {
+            var value = document.getElementById(inputId).value;
+            if (value > 0) {
+                printableContent += '<p><strong>' + description + ':</strong> ' + value + '</p>';
+            }
+        }
+
+        // Add input values
+        addInputValueToPrintableContent("surveyReading", "Survey Reading (Pages)");
+        addInputValueToPrintableContent("understandReading", "Understand Reading (Pages)");
+        addInputValueToPrintableContent("engageReading", "Engage Reading (Pages)");
+        addInputValueToPrintableContent("reflectiveWriting", "Reflective Writing (Pages)");
+        addInputValueToPrintableContent("argumentWriting", "Argument Writing (Pages)");
+        addInputValueToPrintableContent("researchWriting", "Research Writing (Pages)");
+        addInputValueToPrintableContent("examPreparation", "Exam Preparation (Hours)");
+        addInputValueToPrintableContent("lectures", "Lectures (Hours)");
+        addInputValueToPrintableContent("independentWork", "Independent Work (Hours)");
+        addInputValueToPrintableContent("homeExercises", "Home Exercises (Hours)");
+        addInputValueToPrintableContent("groupWorkHours", "Group Work (Hours)");
+        addInputValueToPrintableContent("otherWorkHours", "Other Work (Hours)");
+
+        // Add total hours and ECTS
+        var totalHours = document.getElementById("totalHours").innerHTML;
+        var ectsCredits = document.getElementById("ectsCredits").innerHTML;
+        printableContent += '<p><strong>Total Hours:</strong> ' + totalHours + '</p>';
+        printableContent += '<p><strong>ECTS Credits:</strong> ' + ectsCredits + '</p>';
+
+        // Open print window
+        var printWindow = window.open('', '_blank');
+        printWindow.document.write('<html><head><title>Print Results</title></head><body>');
+        printWindow.document.write(printableContent);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+    }
     </script>
 </body>
 </html>
