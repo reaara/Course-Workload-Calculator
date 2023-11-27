@@ -124,6 +124,25 @@
         .info:hover .tooltip {
             display: block;
         }
+	    
+	@media print {
+ 	/* Hide everything by default */
+   	body * {
+     		visibility: hidden;
+  	  }
+   	 
+	/* Then display the results section only */
+  	.result, .result * {
+        	visibility: visible;
+    	  }
+   	/* Position the results at the top of the printed page */
+   	 .result {
+        	position: absolute;
+        	left: 0;
+      	 	top: 0;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -209,6 +228,8 @@
 	<div class="button-group">
  	   <button id="calculateBtn" onclick="calculateWorkload()">Calculate Workload</button>
  	   <button id="resetBtn" onclick="resetForm()">Reset</button>
+	   <button id="printBtn" onclick="printResults()">Print Results</button>
+
 	</div>
 
         <!-- Results Display -->
@@ -315,7 +336,9 @@ function calculateWorkload() {
         document.getElementById("totalHours").innerHTML = '0';
         document.getElementById("ectsCredits").innerHTML = '0';
     }
-		
+	function printResults() {
+        window.print();
+    }	
     </script>
 </body>
 </html>
