@@ -37,6 +37,16 @@
         }
         button:hover {
             background-color: #45a049;
+		
+	.button-group {
+   	 text-align: center;
+   	 margin-top: 20px;
+	}
+
+	.button-group button {
+ 	   margin: 0 5px; /* Spacing between buttons */
+	}
+		
         }
         .result {
             margin-top: 20px;
@@ -170,8 +180,10 @@
             <input type="number" id="otherWorkHours" placeholder="Enter number of hours">
         </div>
 
-        <!-- Calculation Button -->
-        <button id="calculateBtn" onclick="calculateWorkload()">Calculate Workload</button>
+	<div class="button-group">
+ 	   <button id="calculateBtn" onclick="calculateWorkload()">Calculate Workload</button>
+ 	   <button id="resetBtn" onclick="resetForm()">Reset</button>
+	</div>
 
         <!-- Results Display -->
         <div class="result">
@@ -258,6 +270,25 @@ function calculateWorkload() {
 			document.getElementById("understandReadingRate").oninput = function() {
 			document.getElementById("understandReadingRateValue").innerHTML = this.value;
 		}
+	     function resetForm() {
+        // Reset all input type="number" fields
+        var numberInputs = document.querySelectorAll('input[type="number"]');
+        numberInputs.forEach(function(input) {
+            input.value = '';
+        });
+
+        // Reset all input type="range" fields to their default values
+        document.getElementById("surveyReadingRate").value = 35;
+        document.getElementById("surveyReadingRateValue").innerHTML = '35';
+        document.getElementById("understandReadingRate").value = 15;
+        document.getElementById("understandReadingRateValue").innerHTML = '15';
+        document.getElementById("engageReadingRate").value = 7;
+        document.getElementById("engageReadingRateValue").innerHTML = '7';
+
+        // Update results to zero
+        document.getElementById("totalHours").innerHTML = '0';
+        document.getElementById("ectsCredits").innerHTML = '0';
+    }
 		
     </script>
 </body>
