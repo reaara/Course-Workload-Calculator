@@ -341,7 +341,7 @@ function printResults() {
         var rate = document.getElementById(rateId) ? parseFloat(document.getElementById(rateId).value) : null;
         if (value > 0) {
             var hours = rate ? (value / rate).toFixed(2) : value; // Calculate hours if rate is provided
-            printableContent += '<p><strong>' + description + ':</strong> ' + value + ' (Hours: ' + hours + ')</p>';
+            printableContent += '<p><strong>' + description + ':</strong> ' + value + ' (= ' + hours + ' hours)</p>';
         }
     }
 
