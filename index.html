@@ -336,28 +336,28 @@ function printResults() {
     var printableContent = '<h2>Course Workload Calculator Results</h2>';
 
     // Function to add input values and calculated hours to printable content
-    function addInputValueToPrintableContent(inputId, rateId, description) {
+    function addInputValueToPrintableContent(inputId, rateId, description, rateMultiplier) {
         var value = document.getElementById(inputId).value;
-        var rate = document.getElementById(rateId) ? parseFloat(document.getElementById(rateId).value) : null;
+        var rate = document.getElementById(rateId) ? parseFloat(document.getElementById(rateId).value) : rateMultiplier;
         if (value > 0) {
-            var hours = rate ? (value / rate).toFixed(2) : value; // Calculate hours if rate is provided
+            var hours = rate ? (value * rate).toFixed(2) : value; // Calculate hours based on rate or multiplier
             printableContent += '<p><strong>' + description + ':</strong> ' + value + ' (= ' + hours + ' hours)</p>';
         }
     }
 
     // Add input values
-    addInputValueToPrintableContent("surveyReading", "surveyReadingRate", "Survey Reading (Pages)");
-    addInputValueToPrintableContent("understandReading", "understandReadingRate", "Understand Reading (Pages)");
-    addInputValueToPrintableContent("engageReading", "engageReadingRate", "Engage Reading (Pages)");
-    addInputValueToPrintableContent("reflectiveWriting", null, "Reflective Writing (Pages)");
-    addInputValueToPrintableContent("argumentWriting", null, "Argument Writing (Pages)");
-    addInputValueToPrintableContent("researchWriting", null, "Research Writing (Pages)");
-    addInputValueToPrintableContent("examPreparation", null, "Exam Preparation (Hours)");
-    addInputValueToPrintableContent("lectures", null, "Lectures (Hours)");
-    addInputValueToPrintableContent("independentWork", null, "Independent Work (Hours)");
-    addInputValueToPrintableContent("homeExercises", null, "Home Exercises (Hours)");
-    addInputValueToPrintableContent("groupWorkHours", null, "Group Work (Hours)");
-    addInputValueToPrintableContent("otherWorkHours", null, "Other Work (Hours)");
+    addInputValueToPrintableContent("surveyReading", "surveyReadingRate", "Survey Reading (Pages)", null);
+    addInputValueToPrintableContent("understandReading", "understandReadingRate", "Understand Reading (Pages)", null);
+    addInputValueToPrintableContent("engageReading", "engageReadingRate", "Engage Reading (Pages)", null);
+    addInputValueToPrintableContent("reflectiveWriting", null, "Reflective Writing (Pages)", 1);
+    addInputValueToPrintableContent("argumentWriting", null, "Argument Writing (Pages)", 2);
+    addInputValueToPrintableContent("researchWriting", null, "Research Writing (Pages)", 4);
+    addInputValueToPrintableContent("examPreparation", null, "Exam Preparation (Hours)", 1);
+    addInputValueToPrintableContent("lectures", null, "Lectures (Hours)", 1);
+    addInputValueToPrintableContent("independentWork", null, "Independent Work (Hours)", 1);
+    addInputValueToPrintableContent("homeExercises", null, "Home Exercises (Hours)", 1);
+    addInputValueToPrintableContent("groupWorkHours", null, "Group Work (Hours)", 1);
+    addInputValueToPrintableContent("otherWorkHours", null, "Other Work (Hours)", 1);
 
     // Add total hours and ECTS
     var totalHours = document.getElementById("totalHours").innerHTML;
