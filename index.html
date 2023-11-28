@@ -137,6 +137,21 @@ button#printBtn:hover {
         .info:hover .tooltip {
             display: block;
         }
+
+	    .info-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-section .note {
+    text-align: left;
+    flex-basis: 50%;
+}
+
+.info-section .credit {
+    text-align: right;
+    flex-basis: 50%;
+}
 	
 
     </style>
@@ -144,9 +159,10 @@ button#printBtn:hover {
 <body>
     <div class="container">
         <h1>Course Workload Calculator</h1>
-	<p align="left"><b>Note:</b>The coeffiecients given are simplified and an estimation should always be made
-		according to teachers understanding of the material, group and other circumstances.</p>
-	    <p align="right"><b>Credit:</b> 1 ECTS = 27 h</p>
+	<div class="info-section">
+   	 <p class="note"><b>Note:</b> The coefficients given are simplified and an estimation should always be made according to teachers understanding of the material, group, and other circumstances.</p>
+   	 <p class="credit"><b>Credit:</b> 1 ECTS = 27 h</p>
+	</div>
         <!-- Reading Section -->
         <div class="section">
             <h2>Reading</h2>
@@ -155,7 +171,7 @@ button#printBtn:hover {
 			<!-- Slider -->
 			<label for="surveyReadingRate">20-50 pages / hour in native language. Foreign lang. 60 %</label>
 			<input type="range" id="surveyReadingRate" min="12" max="50" value="35">
-			<span id="surveyReadingRateValue">35</span> pages/hour
+			<span id="surveyReadingRateValue">35</span> pages/hour	
             <br><br>
 			
 			<label for="understandReading">Understand Reading (Pages): <span class="info">i<span class="tooltip">Reading to understand the meaning of each sentence</span></span></label>
