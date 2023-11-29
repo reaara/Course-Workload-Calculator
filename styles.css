@@ -1,0 +1,164 @@
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .button-group {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button-group button {
+            margin: 0 5px;
+            /* Spacing between buttons */
+        }
+
+        /* Style for the calculate button */
+        button#calculateBtn {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            /* Green color for calculate */
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Style for the reset button */
+        button#resetBtn {
+            padding: 10px 20px;
+            background-color: #f44336;
+            /* Red color for reset */
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Hover effect for reser button */
+        button#resetBtn:hover {
+            opacity: 0.9;
+        }
+
+        button#printBtn {
+            padding: 10px 20px;
+            background-color: #2196F3;
+            /* Blue color for print */
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Hover effect for the print button */
+        button#printBtn:hover {
+            opacity: 0.9;
+        }
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            border-top: 1px solid #ccc;
+        }
+
+        footer ul {
+            list-style-type: none;
+            /* Removes bullet points */
+            padding-left: 0;
+            /* Aligns with the start of the footer text */
+        }
+
+        footer li {
+            margin-bottom: 5px;
+            /* Spacing between list items, adjust as needed */
+        }
+
+        .info {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 50%;
+            cursor: help;
+            position: relative;
+        }
+
+        .tooltip {
+            display: none;
+            max-width: 800px;
+            background-color: black;
+            color: white;
+            text-align: left;
+            padding: 5px;
+            border-radius: 6px;
+            position: absolute;
+            z-index: 1;
+            bottom: 30px;
+            left: 100%;
+            margin-left: 10px;
+            white-space: nowrap;
+        }
+
+        .info:hover .tooltip {
+            display: block;
+        }
+
+        .info-section {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .info-section .note {
+            text-align: left;
+            flex-basis: 50%;
+        }
+
+        .info-section .credit {
+            text-align: right;
+            flex-basis: 50%;
+        }
